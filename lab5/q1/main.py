@@ -6,7 +6,8 @@ import sys
 
 class SimpleDrawingWindow(QWidget):
     def __init__(self):
-        pass
+        QWidget.__init__(self, None)
+
 
     def paintEvent(self, e):
         self.drawKaowphod(e)
@@ -16,8 +17,14 @@ class SimpleDrawingWindow(QWidget):
         pass
 
     def drawKaowphod(self, e):
-        pass
+        p = QPainter()
+        p.begin(self)
 
+        p.setPen(QColor(0, 25, 51))
+        p.setBrush(QColor(0, 25, 51))
+        p.drawRect(0, 0, 50, 50)
+
+        p.end()
 
 def main():
     app = QApplication(sys.argv)
@@ -26,3 +33,6 @@ def main():
     w.show()
 
     return app.exec()
+
+if __name__ == "__main__":
+    sys.exit(main())
