@@ -40,7 +40,13 @@ class Train(Transportation):
        return self.distance * self.bath_per_km
 
 
+class Bus(Transportation):
 
+   def __init__(self, start, end, distance):
+      super().__init__(start, end, distance)
+
+   def find_cost(self):
+      return 2 * self.distance
    
 # main program
 
