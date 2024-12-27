@@ -8,6 +8,7 @@ class SimpleDrawingWindow(QWidget):
     def __init__(self):
         QWidget.__init__(self, None)
 
+
         self.johnny_depp = QPixmap("images/johnny_depp.jpg")
 
     def paintEvent(self, e):
@@ -27,8 +28,14 @@ class SimpleDrawingWindow(QWidget):
 
 
     def drawKaowphod(self, e):
-        pass
+        p = QPainter()
+        p.begin(self)
 
+        p.setPen(QColor(0, 25, 51))
+        p.setBrush(QColor(0, 25, 51))
+        p.drawRect(0, 0, 50, 50)
+
+        p.end()
 
 def main():
     app = QApplication(sys.argv)
