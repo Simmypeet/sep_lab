@@ -1,6 +1,8 @@
 from turtle import *
 import turtle
 
+from turtle import Turtle
+
 class Disk(object):
     def __init__(self, name="", xpos=0, ypos=0, height=20, width=40):
         self.dname = name
@@ -35,23 +37,24 @@ class Disk(object):
         self.dypos = ypos
 
     def cleardisk(self):
-        self.pen.penup()
-        self.pen.setpos(self.dxpos, self.dypos)
-        self.pen.seth(0)
-        self.pen.pendown()
-        self.pen.fillcolor("white")
-        self.pen.pencolor("white")
-        self.pen.begin_fill()
-        self.pen.fd(self.dwidth / 2)
-        self.pen.left(90)
-        self.pen.fd(self.dheight)
-        self.pen.left(90)
-        self.pen.fd(self.dwidth)
-        self.pen.left(90)
-        self.pen.fd(self.dheight)
-        self.pen.left(90)
-        self.pen.fd(self.dwidth / 2)
-        self.pen.end_fill()
+        self.pen.clear()
+        # self.pen.penup()
+        # self.pen.setpos(self.dxpos, self.dypos)
+        # self.pen.seth(0)
+        # self.pen.pendown()
+        # self.pen.fillcolor("white")
+        # self.pen.pencolor("white")
+        # self.pen.begin_fill()
+        # self.pen.fd(self.dwidth / 2)
+        # self.pen.left(90)
+        # self.pen.fd(self.dheight)
+        # self.pen.left(90)
+        # self.pen.fd(self.dwidth)
+        # self.pen.left(90)
+        # self.pen.fd(self.dheight)
+        # self.pen.left(90)
+        # self.pen.fd(self.dwidth / 2)
+        # self.pen.end_fill()
  
 
 class Pole(object):
@@ -80,12 +83,28 @@ class Pole(object):
         pen.forward(self.pthick / 2)
 
     def pushdisk(self, disk: Disk):
+        disk.dypos = self.plength + 20
+        disk.showdisk()
+        disk.cleardisk()
+
+        disk.dypos = self.toopos
+        disk.dxpos = self.pxpos
+
         self.stack.append(disk)
         self.toopos += disk.dheight
-        disk.showdish()
+        disk.showdisk()
 
     def popdisk(self):
-        pass
+        # pop empty stack ? 
+        assert len(self.stack) > 0
+
+        removed_disk = self.stack.pop(len(self.stack) - 1)
+
+        # reduce the toppos by its heigh
+        self.toopos -= removed_disk.dheight
+        removed_disk.cleardisk()
+
+        return removed_disk
 
 
 class Hanoi(object):
