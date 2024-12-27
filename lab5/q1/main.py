@@ -7,12 +7,8 @@ import sys
 class SimpleDrawingWindow(QWidget):
     def __init__(self):
         QWidget.__init__(self, None)
-<<<<<<< Updated upstream
-
 
         self.johnny_depp = QPixmap("images/johnny_depp.jpg")
-=======
->>>>>>> Stashed changes
 
     def paintEvent(self, e):
         self.drawKaowphod(e)
@@ -35,13 +31,12 @@ class SimpleDrawingWindow(QWidget):
         p = QPainter()
         p.begin(self)
 
-<<<<<<< Updated upstream
         p.setPen(QColor(0, 25, 51))
         p.setBrush(QColor(0, 25, 51))
         p.drawRect(0, 0, 50, 50)
 
         p.end()
-=======
+
     def drawDiyaan(self, e):
         p = QPainter()
 
@@ -57,8 +52,6 @@ class SimpleDrawingWindow(QWidget):
         ])
         p.end()
 
->>>>>>> Stashed changes
-
 def main():
     app = QApplication(sys.argv)
 
@@ -67,9 +60,5 @@ def main():
 
     return app.exec()
 
-<<<<<<< Updated upstream
 if __name__ == "__main__":
     main()
-=======
-sys.exit(main())
->>>>>>> Stashed changes
