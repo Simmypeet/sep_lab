@@ -1,3 +1,6 @@
+from turtle import *
+
+
 class Disk(object):
     def __init__(self, name="", xpos=0, ypos=0, height=20, width=40):
         self.dname = name
@@ -26,10 +29,24 @@ class Pole(object):
         self.plength = length
 
     def showpole(self):
-        pass
+        pen = Turtle()
+        pen.penup()
+        pen.goto(self.pxpos, self.pypos)
+        pen.pendown()
+        pen.forward(self.pthick / 2)
+        pen.left(90)
+        pen.forward(self.plength)
+        pen.left(90)
+        pen.forward(self.pthick)
+        pen.left(90)
+        pen.forward(self.plength)
+        pen.left(90)
+        pen.forward(self.pthick / 2)
 
-    def pushdisk(self, disk):
-        pass
+    def pushdisk(self, disk: Disk):
+        self.stack.append(disk)
+        self.toopos += disk.dheight
+        disk.showdish()
 
     def popdisk(self):
         pass
