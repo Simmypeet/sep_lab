@@ -26,3 +26,6 @@ def main():
     w.show()
 
     return app.exec()
+
+if __name__ == "__main__":
+    main()
