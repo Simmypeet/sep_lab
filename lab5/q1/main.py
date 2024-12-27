@@ -9,12 +9,23 @@ class SimpleDrawingWindow(QWidget):
         QWidget.__init__(self, None)
 
 
+        self.johnny_depp = QPixmap("images/johnny_depp.jpg")
+
     def paintEvent(self, e):
         self.drawKaowphod(e)
         self.drawTada(e)
 
     def drawTada(self, e):
-        pass
+        p = QPainter()
+        p.begin(self)
+
+        p.setPen(QColor(0, 0, 0))
+        p.setBrush(QColor(0, 127, 0))
+
+        p.drawPixmap(QRect(300, 0, 200, 200), self.johnny_depp)
+        p.drawPie(300, 0, 100, 100, 0, 180 * 16)
+        p.end()
+
 
     def drawKaowphod(self, e):
         p = QPainter()
@@ -35,4 +46,4 @@ def main():
     return app.exec()
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()
